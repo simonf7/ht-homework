@@ -3,8 +3,8 @@
 ## Set up (from project root)
 ```bash
 composer install
-app/console doctrine:database:create
-app/console doctrine:schema:update --force
+bin/console doctrine:database:create
+bin/console doctrine:schema:update --force
 bin/console server:run
 ```
 
