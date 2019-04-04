@@ -19,6 +19,18 @@ class TaskRepository extends ServiceEntityRepository
         parent::__construct($registry, Task::class);
     }
 
+    /**
+     * @return Task[] Returns an array of Task objects
+     */
+    public function findAll()
+    {
+        return $this->createQueryBuilder('t')
+            ->orderBy('t.dueDate', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Task[] Returns an array of Task objects
     //  */
