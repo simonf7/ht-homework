@@ -28,6 +28,16 @@ class Task
      */
     private $dueDate;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 10,
+     *      minMessage = "The description must be at least {{ limit }} characters long."
+     * )
+     */
+    private $description;
+
 
     public function getId(): ?int
     {
@@ -54,6 +64,18 @@ class Task
     public function setDueDate(\DateTimeInterface $dueDate): self
     {
         $this->dueDate = $dueDate;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
