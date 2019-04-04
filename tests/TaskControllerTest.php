@@ -32,11 +32,13 @@ class TaskControllerTest extends WebTestCase
             'task[dueDate][month]'  => '8',
             'task[dueDate][day]'    => '10',
             'task[dueDate][year]'   => '2020',
+            'task[description]'     => 'My Task Description',
         ]);
 
         $crawler = $client->submit($form);
 
         $this->assertContains('My New Task', $crawler->filter('table tbody tr:first-child td:nth-child(2)')->text());
         $this->assertContains('10/08/2020', $crawler->filter('table tbody tr:first-child td:nth-child(3)')->text());
+        $this->assertContains('My Task Description', $crawler->filter('table tbody tr:first-child td:nth-child(4)')->text());
     }
 }
